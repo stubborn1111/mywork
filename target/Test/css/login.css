@@ -1,0 +1,423 @@
+body {
+	background: url(../img/index.jpg) no-repeat;
+	background-size: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.black {
+	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+	width: 100%;
+	height: 130px;
+	position: absolute;
+	top: 0;
+}
+
+.all {
+	width: 1150px;
+	min-height: 100px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.head {
+	position: relative;
+	width: 1150px;
+	/*height: 130px;*/
+	z-index: 40;
+	display: inline-block;
+	color: white;
+	top: 0;
+	margin: auto;
+}
+
+.menu {
+	width: 1150px;
+	list-style: none;
+	z-index: 40;
+	display: inline-block;
+	margin-bottom: 0;
+	color: white;
+	padding: 0 20px;
+	font-size: 110%;
+	top: 0;
+	position: absolute;
+	/*margin-top: -100px;*/
+	margin: -20px auto 0 auto;
+}
+
+#seek {
+	float: left;
+	cursor: pointer;
+	width: 6%;
+	margin-left: 2%;
+	margin-top: 2.5%;
+}
+
+.head img {
+	width: 20%;
+}
+
+.ls {
+	float: left;
+	padding-left: 3%;
+	padding-right: 2%;
+}
+
+#seek img {
+	width: 50%;
+	margin-top: -4%;
+	margin-right: 5%;
+}
+
+#close {
+	position: absolute;
+	right: 150px;
+	top: 50px;
+	width: 60px;
+	height: 60px;
+	text-align: center;
+	line-height: 60px;
+	cursor: pointer;
+}
+
+#close img {
+	width: 80%;
+}
+
+#hunt {
+	background: rgba(0, 0, 0, 0.8);
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 100;
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.3s ease-out 0s;
+}
+
+.seekbox {
+	transform: none;
+	transition: all 0.5s ease-out 0s;
+	opacity: 1;
+	height: 45px;
+	line-height: 45px;
+	width: 560px;
+	margin: 20% 30%;
+}
+
+#keyword {
+	background: #fff;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5) inset;
+	padding: 0 12px;
+	font-size: 30px;
+	border: 0;
+	width: 408px;
+	margin: 0;
+}
+
+#seekok {
+	color: #fff;
+	width: 120px;
+	text-align: center;
+	font-size: 27px;
+	cursor: pointer;
+	background-color: rgb(51 74 114);
+	border: 0;
+	padding: 0;
+}
+
+.write {
+	width: 20px;
+	height: 20px;
+	float: left;
+	margin-top: 3.5%;
+	margin-left: 5%;
+	margin-right: 2%;
+	background: url(../img/csdn-write.png) center center no-repeat;
+	background-size: auto;
+	background-size: contain;
+	white-space: nowrap;
+}
+
+#edit {
+	height: 40%;
+	width: 12%;
+	padding: 2%;
+	color: #fff;
+	float: left;
+	margin-top: 0.5%;
+	font-size: 110%;
+	white-space: nowrap;
+}
+
+#edit span {
+	vertical-align: super;
+}
+
+.index {
+	float: left;
+	padding: 2% 1%;
+	height: 100%;
+	width: 7%;
+	font-size: 110%;
+	margin-top: 0.5%;
+	white-space: nowrap;
+}
+
+.bbs {
+	float: right;
+	padding-right: 5%;
+	padding-left: 1%;
+	margin-top: -0.3%;
+}
+
+.login1,
+.register1 {
+	float: left;
+	padding: 2% 1%;
+	width: 6%;
+	margin-top: 0.5%;
+	font-size: 110%;
+}
+
+.both {
+	margin: auto;
+	position: absolute;
+	width: 1150px;
+	height: 111px;
+}
+
+.main {
+	position: absolute;
+	top: 190px;
+	width: 800px;
+	height: 500px;
+	z-index: 50;
+	margin-left: 180px;
+	margin-right: 100px;
+}
+
+.main1 {
+	position: absolute;
+	top: 190px;
+	width: 800px;
+	height: 550px;
+	z-index: 50;
+	margin-left: 180px;
+	margin-right: 100px;
+}
+
+#login {
+	position: relative;
+	float: right;
+	padding: 8% 5%;
+	width: 60%;
+	text-align: center;
+	background-color: white;
+	height: 60%;
+}
+
+.post {
+	position: relative;
+	float: left;
+	width: 40%;
+	padding: 4%;
+	height: 60%;
+	color: white;
+	background-color: rgba(0, 0, 0, 0.6);
+	font-family: 'Microsoft YaHei', 'SF Pro Display', Roboto, Noto, Arial, 'PingFang SC', sans-serif;
+}
+
+form {
+	border-left: 2px solid #818297;
+	padding-right: 2%;
+}
+
+input[type="text"],
+input[type="password"] {
+	width: 60%;
+	padding: 1% 2%;
+	margin-top: 6%;
+}
+
+#username {
+	margin-top: 0;
+}
+
+input {
+	border: 2px solid #818297;
+}
+
+#password {
+	margin-left: 5%;
+}
+
+.register {
+	float: right;
+	margin-right: 2%;
+	font-size: 100%;
+	color: white;
+}
+
+#pwd {
+	top: 38px;
+	left: -80px;
+	display: inline-block;
+}
+
+#code2 {
+	top: 45px;
+	left: 10px;
+}
+
+#code1 {
+	top: 45px;
+	left: -8px;
+}
+
+#user {
+	top: 2px;
+	left: -10px;
+}
+
+#loginok,
+#registerok {
+	margin: auto;
+	margin-top: 6%;
+	width: 60%;
+	text-align: center;
+	display: block;
+	border: 0;
+	padding: 1%;
+	background-color: #818297;
+	color: white;
+	font-size: 110%;
+}
+
+#look {
+	top: 0px;
+	left: -22px;
+	color: #818297;
+}
+
+#hintname {
+	position: absolute;
+	width: 30%;
+	left: 71%;
+	top: 23%;
+	color: #94070a;
+	font-weight: 550;
+	font-size: 90%;
+}
+
+#hintpwd {
+	position: absolute;
+	width: 30%;
+	left: 71%;
+	top: 42%;
+	color: #94070a;
+	font-weight: 550;
+	font-size: 90%;
+}
+
+#hint {
+	position: absolute;
+	width: 30%;
+	left: 71%;
+	top: 55%;
+	color: #94070a;
+	font-weight: 550;
+	font-size: 90%;
+}
+
+#hintname2 {
+	position: absolute;
+	width: 24%;
+	left: 73%;
+	top: 21%;
+	color: #94070a;
+	font-weight: 550;
+	font-size: 90%;
+}
+
+#hintpwd2 {
+	position: absolute;
+	width: 24%;
+	left: 73%;
+	top: 36%;
+	color: #94070a;
+	font-weight: 550;
+	font-size: 90%;
+}
+
+.checkbox {
+	padding-left: 9%;
+	padding-top: 2%;
+}
+
+.picture2 {
+	position: absolute;
+	width: 30%;
+	left: 71%;
+	top: 52%;
+}
+
+.picture3 {
+	position: absolute;
+	width: 30%;
+	left: 71%;
+	top: 62%;
+}
+
+.picture2 img {}
+
+.glyphicon-user,
+.glyphicon-lock,
+.glyphicon-barcode {
+	color: #818297;
+}
+
+#topic {
+	color: white;
+	font-size: 180%;
+	text-align:center;
+	font-weight: 500;
+	margin-bottom: 5%;
+}
+
+#topic2 {
+	font-size: 110%;
+	margin-bottom: 10%;
+	text-indent: 2em;
+	cursor: pointer;
+}
+
+#content {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 6;
+	overflow: hidden;
+}
+#content img{
+	width: 50%;
+}
+a:link {
+	text-decoration: none;
+	color: white;
+}
+
+a:active {
+	color: white;
+}
+
+a:visited {
+	color: white;
+}
+
+.menu a:hover {
+	color: white;
+	text-decoration: none;
+}

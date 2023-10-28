@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--引入映射配置文件-->
+<mapper namespace="com.hengzhi.mapper.BoardMapper">
+    <resultMap id="PostMap" type="com.hengzhi.entity.Post">
+        <result column="post_id" property="postId"></result>
+        <result column="title" property="title"></result>
+        <result column="info" property="info"></result>
+        <result column="user_id" property="userId"></result>
+        <result column="reply_number" property="replyNumber"></result>
+        <result column="praise" property="praise"></result>
+        <result column="review" property="review"></result>
+        <result column="whether_top" property="whetherTop"></result>
+        <result column="whether_file" property="whetherFile"></result>
+        <result column="fileUrl" property="fileUrl"></result>
+        <result column="which_board" property="whichBoard"></result>
+        <result column="whether_review" property="whetherReview"></result>
+        <result column="date" property="date"></result>
+    </resultMap>
+    <resultMap id="BoardMap" type="com.hengzhi.entity.Board">
+        <result column="board_id" property="boardId"></result>
+        <result column="board_name" property="boardName"></result>
+        <result column="post_number" property="postNumber"></result>
+    </resultMap>
+    <select id="getBoardName" resultType="java.lang.String">
+        select board_name
+        from board
+        where board_id=#{boardId}
+    </select>
+    <!--    根据板块id，返回所管理的板块名字-->
+    <select id="getBoardNameByBoardId" resultType="java.lang.String">
+        select board_name
+        from board
+        where board_id = #{boardId,jdbcType=BIGINT}
+    </select>
+    <!--    根据用户id，获取用户名-->
+    <select id="getUsernameByUserId" resultType="java.lang.String">
+        select username
+        from user
+        where user_id = #{userId,jdbcType=BIGINT}
+    </select>
+    <!--    主页所有板块-->
+    <select id="allBoard" resultMap="BoardMap">
+        select *
+        from board
+    </select>
+    <!--    对应板块的所有未置顶帖子-->
+    <select id="allPostByBoardId" resultMap="PostMap">
+        select *
+        from post
+        <where>
+            which_board = #{boardId,jdbcType=BIGINT}
+            and
+            whether_top = 0
+        </where>
+    </select>
+    <!--    对应板块的置顶帖子-->
+    <select id="allPost1ByBoardId" resultMap="PostMap">
+        select *
+        from post
+        <where>
+            which_board = #{boardId,jdbcType=BIGINT}
+            and
+            whether_top = 1
+        </where>
+    </select>
+    <!--    对应板块的热帖-->
+    <select id="hotPost" resultMap="PostMap">
+        select *
+        from post
+        where which_board = #{whichBoard,jdbcType=BIGINT}
+        order by reply_number desc limit 3
+    </select>
+</mapper>

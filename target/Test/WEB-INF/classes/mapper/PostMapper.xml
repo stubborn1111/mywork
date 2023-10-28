@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--引入映射配置文件-->
+<mapper namespace="com.hengzhi.mapper.PostMapper">
+    <resultMap id="UserMap" type="com.hengzhi.entity.User">
+        <result column="user_id" property="userId"></result>
+        <result column="username" property="username"></result>
+        <result column="password" property="password"></result>
+        <result column="score" property="score"></result>
+        <result column="level" property="level"></result>
+        <result column="headImageUrl" property="headImageUrl"></result>
+        <result column="power" property="power"></result>
+        <result column="review" property="review"></result>
+        <result column="whether_review" property="whetherReview"></result>
+    </resultMap>
+    <resultMap id="PostMap" type="com.hengzhi.entity.Post">
+        <result column="post_id" property="postId"></result>
+        <result column="title" property="title"></result>
+        <result column="info" property="info"></result>
+        <result column="user_id" property="userId"></result>
+        <result column="reply_number" property="replyNumber"></result>
+        <result column="praise" property="praise"></result>
+        <result column="review" property="review"></result>
+        <result column="whether_top" property="whetherTop"></result>
+        <result column="whether_file" property="whetherFile"></result>
+        <result column="fileUrl" property="fileUrl"></result>
+        <result column="which_board" property="whichBoard"></result>
+        <result column="whether_review" property="whetherReview"></result>
+        <result column="date" property="date"></result>
+    </resultMap>
+    <resultMap id="ReplyMap" type="com.hengzhi.entity.Reply">
+        <result column="reply_id" property="replyId"></result>
+        <result column="post_id" property="postId"></result>
+        <result column="user_id" property="userId"></result>
+        <result column="replied_id" property="repliedId"></result>
+        <result column="reply_info" property="replyInfo"></result>
+        <result column="kind" property="kind"></result>
+        <result column="praise" property="praise"></result>
+        <result column="date" property="date"></result>
+    </resultMap>
+    <sql id="Base_Column_List">
+        user_id,username,score,level,headImageUrl,power,review,whether_review
+    </sql>
+    <!--    根据用户id，帖子id，判断用户收藏此帖子-->
+    <select id="ifCollect" resultType="java.lang.Integer">
+        select favoritepost_id
+        from favoritepost
+        <where>
+            Collector_id = #{userId,jdbcType=BIGINT}
+            and
+            Collected_id = #{postId,jdbcType=BIGINT}
+        </where>
+    </select>
+    <!--    根据用户id，帖子id，判断用户是否给此帖子点赞-->
+    <select id="ifPraise" resultType="java.lang.Integer">
+        select praise_id
+        from praise
+        <where>
+            user_id = #{userId,jdbcType=BIGINT}
+            and
+            post_id = #{postId,jdbcType=BIGINT}
+            and
+            kind =1
+        </where>
+    </select>
+    <!--    根据用户id，回复id，判断用户是否给此回复点赞-->
+    <select id="ifPraise1" resultType="java.lang.Integer">
+        select praise_id
+        from praise
+        <where>
+            user_id = #{userId,jdbcType=BIGINT}
+            and
+            reply_id = #{replyId,jdbcType=BIGINT}
+            and
+            kind=0
+        </where>
+    </select>
+    <!--    根据板块id，返回板块名字-->
+    <select id="getBoardNameByBoardId" resultType="java.lang.String">
+        select board_name
+        from board
+        where board_id = #{boardId,jdbcType=BIGINT}
+    </select>
+    <!--    根据帖子id获取帖子-->
+    <select id="getPostByPostId" resultMap="PostMap">
+        select *
+        from post
+        where post_id = #{postId,jdbcType=BIGINT}
+    </select>
+    <!--    根据用户id获取用户信息-->
+    <select id="getUserByUserId" resultMap="UserMap">
+        select
+        <include refid="Base_Column_List"></include>
+        from user
+        where user_id = #{userId,jdbcType=BIGINT}
+    </select>
+    <!--    给帖子id，按时间返回，所有回复-->
+    <select id="getReplyByPostId" resultMap="ReplyMap">
+        select *
+        from reply
+        where post_id = #{postId,jdbcType=BIGINT}
+    </select>
+    <!--    判断一个回复是否存在-->
+    <select id="replyExist" resultMap="ReplyMap">
+        select *
+        from reply
+        where reply_id = #{replyId,jdbcType=BIGINT}
+    </select>
+    <select id="getReplyId" resultType="java.lang.Integer">
+        select reply_id
+        from reply
+        <where>
+            user_id = #{userId}
+            and
+            post_id =#{postId}
+        </where>
+    </select>
+    <!--    回复功能-->
+    <insert id="addReply">
+        insert
+        into reply(post_id,user_id,replied_id,reply_info,kind)
+        value(#{postId},#{userId},#{repliedId},#{replyInfo},#{kind})
+    </insert>
+    <!--    给帖子点赞-->
+    <insert id="addPostPraise">
+        insert
+        into praise(user_id,post_id,kind)
+        value(#{userId},#{postId},#{kind})
+    </insert>
+    <!--    给回复点赞-->
+    <insert id="addReplyPraise">
+        insert
+        into praise(user_id,post_id,reply_id,kind)
+        value(#{userId},#{postId},#{replyId},#{kind})
+    </insert>
+    <!--    取消点赞-->
+    <delete id="cancelPraise">
+        delete
+        from praise
+        <where>
+            user_id=#{userId}
+            and
+            post_id=#{postId}
+            and
+            reply_id=#{replyId}
+        </where>
+    </delete>
+    <!--    收藏帖子-->
+    <insert id="addCollect">
+        insert into
+        favoritepost(Collector_id,Collected_id)
+        value(#{userId},#{postId})
+    </insert>
+    <!--    取消收藏-->
+    <delete id="cancelCollect">
+        delete from
+        favoritepost
+        <where>
+            Collector_id=#{userId}
+            and
+            Collected_id=#{postId}
+        </where>
+    </delete>
+    <!--    删除评论-->
+    <delete id="deleteReply">
+        delete from
+        reply
+        <where>
+            reply_id=#{replyId}
+        </where>
+    </delete>
+    <!--    增加通知-->
+    <insert id="addNotice">
+        insert into
+        notice(user_id,post_id,someone,notice_type)
+        value(#{userId},#{postId},#{someone},#{noticeType})
+    </insert>
+    <select id="getUserIdByReplyId" resultType="java.lang.Integer">
+        select user_id
+        from reply
+        where reply_id = #{replyId}
+    </select>
+    <select id="getUserIdByPostId" resultType="java.lang.Integer">
+        select user_id
+        from post
+        where post_id = #{postId}
+    </select>
+    <!--    增加积分-->
+    <update id="addScore">
+        update user
+        set score = score+#{score}
+        where user_id = #{userId}
+    </update>
+    <!--    得到积分-->
+    <select id="getScore" resultType="java.lang.Integer">
+        select score
+        from user
+        where user_id = #{userId}
+    </select>
+<!--    升级-->
+    <update id="addLevel" >
+        update user
+        set level = level+1
+        where user_id = #{userId}
+    </update>
+    <update id="addPraise" >
+        update post
+        set praise = praise +#{score}
+        where post_id = #{postId}
+    </update>
+    <update id="addPraise1" >
+        update reply
+        set praise = praise +#{score}
+        where reply_id = #{replyId}
+    </update>
+</mapper>

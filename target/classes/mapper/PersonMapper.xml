@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--引入映射配置文件-->
+<mapper namespace="com.hengzhi.mapper.PersonMapper">
+    <resultMap id="UserMap" type="com.hengzhi.entity.User">
+        <result column="user_id" property="userId"></result>
+        <result column="username" property="username"></result>
+        <result column="password" property="password"></result>
+        <result column="score" property="score"></result>
+        <result column="level" property="level"></result>
+        <result column="headImageUrl" property="headImageUrl"></result>
+        <result column="power" property="power"></result>
+        <result column="review" property="review"></result>
+        <result column="whether_review" property="whetherReview"></result>
+    </resultMap>
+    <resultMap id="PostMap" type="com.hengzhi.entity.Post">
+        <result column="post_id" property="postId"></result>
+        <result column="title" property="title"></result>
+        <result column="info" property="info"></result>
+        <result column="user_id" property="userId"></result>
+        <result column="reply_number" property="replyNumber"></result>
+        <result column="praise" property="praise"></result>
+        <result column="review" property="review"></result>
+        <result column="whether_top" property="whetherTop"></result>
+        <result column="whether_file" property="whetherFile"></result>
+        <result column="fileUrl" property="fileUrl"></result>
+        <result column="which_board" property="whichBoard"></result>
+        <result column="whether_review" property="whetherReview"></result>
+        <result column="date" property="date"></result>
+    </resultMap>
+    <resultMap id="BoardMap" type="com.hengzhi.entity.Board">
+        <result column="board_id" property="boardId"></result>
+        <result column="board_name" property="boardName"></result>
+        <result column="post_number" property="postNumber"></result>
+    </resultMap>
+    <resultMap id="favoritePeopleMap" type="com.hengzhi.entity.FavoritePeople">
+        <result column="favoritePeople_id" property="favoritePeopleId"></result>
+        <result column="Collected_id" property="CollectedId"></result>
+        <result column="Collector_id" property="CollectorId"></result>
+        <result column="both_status" property="bothStatus"></result>
+    </resultMap>
+    <sql id="Base_Column_List">
+        user_id,username,score,level,headImageUrl,power,review,whether_review
+    </sql>
+    <!--    主页所有板块-->
+    <select id="allBoard" resultMap="BoardMap">
+        select *
+        from board
+    </select>
+    <!--    个人信息-->
+    <select id="information" resultMap="UserMap">
+        select
+        <include refid="Base_Column_List"></include>
+        from user
+        where user_id = #{userId,jdbcType=BIGINT}
+    </select>
+    <!--    个人信息的修改-->
+    <update id="userUpdate" parameterType="com.hengzhi.entity.User">
+        update user
+        <set>
+            <if test="username!=null and username != ''">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password!=null and password != ''">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="headImageUrl!=null and headImageUrl != ''">
+                headImageUrl = #{headImageUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="review!=null and review != ''">
+                review = #{review,jdbcType=BIGINT},
+            </if>
+            <if test="score!=null and score != ''">
+                score = #{score,jdbcType=BIGINT},
+            </if>
+            <if test="level!=null and level != ''">
+                level = #{level,jdbcType=BIGINT},
+            </if>
+        </set>
+        where user_id = #{userId,jdbcType=BIGINT}
+    </update>
+    <!--    个人页面关注，返回关注的人-->
+    <select id="focus" resultType="java.lang.Integer">
+        select Collected_id
+        from favoritepeople
+        <where>
+            Collector_id = #{userId,jdbcType=BIGINT}
+            and
+            both_status = 'NO'
+        </where>
+    </select>
+    <!--    个人页面取消关注-->
+    <delete id="cancelFocus">
+        delete
+        from favoritepeople
+        <where>
+            Collected_id = #{userId1,jdbcType=BIGINT}
+            and
+            Collector_id = #{userId,jdbcType=BIGINT}
+        </where>
+    </delete>
+    <!--个人页面粉丝-->
+    <select id="fans" resultType="java.lang.Integer">
+        select Collector_id
+        from favoritepeople
+        <where>
+            Collected_id = #{userId,jdbcType=BIGINT}
+            and
+            both_status = 'NO'
+        </where>
+    </select>
+    <!--    个人页面的帖子-->
+    <select id="allPost" resultMap="PostMap">
+        select *
+        from post
+        <where>
+            user_id = #{userId,jdbcType=BIGINT}
+        </where>
+    </select>
+    <!--    个人页面的帖子-->
+    <select id="allPost1" resultMap="PostMap">
+        select *
+        from post
+        <where>
+            user_id = #{userId,jdbcType=BIGINT}
+            and
+            whether_review='YES'
+        </where>
+    </select>
+    <!--    个人收藏的帖子-->
+    <select id="collect" resultType="java.lang.Integer">
+        select Collected_id
+        from favoritepost
+        where Collector_id = #{userId,jdbcType=BIGINT}
+    </select>
+    <!--    个人页面取消收藏-->
+    <delete id="cancelCollect">
+        delete
+        from favoritepost
+        <where>
+            Collected_id = #{postId,jdbcType=BIGINT}
+            and
+            Collector_id = #{userId,jdbcType=BIGINT}
+        </where>
+    </delete>
+    <!--    根据Collected_id获取User类型的用户-->
+    <select id="getUserByCollectId" resultMap="UserMap">
+        select
+        <include refid="Base_Column_List"></include>
+        from user
+        where user_id = #{userId,jdbcType=BIGINT}
+    </select>
+    <!--    根据Collected_id获取User类型的用户-->
+    <select id="getUserByCollectId1" resultMap="UserMap">
+        select *
+        from user
+        where user_id = #{userId,jdbcType=BIGINT}
+    </select>
+    <!--    根据Collected_id获取Post类型的帖子-->
+    <select id="getPostByCollectId" resultMap="PostMap">
+        select *
+        from post
+        where post_id = #{postId,jdbcType=BIGINT}
+    </select>
+    <!--增加帖子-->
+    <insert id="addPost" parameterType="com.hengzhi.entity.Post">
+        insert into
+        post(title,info,user_id,which_board,whether_file,fileUrl)
+        value(#{title},#{info},#{userId},#{whichBoard},#{whetherFile},#{fileUrl})
+    </insert>
+    <!--    判断两个用户是否互关-->
+    <select id="bothStatus" resultMap="favoritePeopleMap">
+        select *
+        from favoritepeople
+        where `Collector_id`=#{userId}
+        and `Collected_id`=#{userId1}
+        and `Collector_id`
+        in (select `Collected_id` from `favoritepeople` where `Collector_id`=#{userId1})
+    </select>
+    <!--    用户的好友-->
+    <select id="friend" resultType="java.lang.Integer">
+        select Collected_id
+        from favoritepeople
+        where Collector_id = #{userId} and both_status ='YES'
+    </select>
+    <!--    关注用户-->
+    <insert id="focusPerson">
+        insert into
+        favoritepeople(Collected_id,Collector_id,both_status)
+        value (#{userId1},#{userId},#{bothStatus})
+    </insert>
+    <!--    判断是否对方已经关注了自己-->
+    <select id="ifFocus" resultMap="favoritePeopleMap">
+        select favoritePeople_id
+        from favoritepeople
+        <where>
+            Collected_id = #{userId1}
+            and
+            Collector_id = #{userId}
+        </where>
+    </select>
+    <!--    根据用户id，获取用户名-->
+    <select id="getUsernameByUserId" resultType="java.lang.String">
+        select username
+        from user
+        where user_id = #{userId,jdbcType=BIGINT}
+    </select>
+    <!--    根据板块id，返回所管理的板块名字-->
+    <select id="getBoardNameByBoardId" resultType="java.lang.String">
+        select board_name
+        from board
+        where board_id = #{boardId,jdbcType=BIGINT}
+    </select>
+    <!--    增加通知-->
+    <insert id="addNotice">
+        insert into
+        notice(user_id,post_id,someone,notice_type,whether_see)
+        value(#{userId},#{postId},#{someone},#{noticeType},#{whetherSee})
+    </insert>
+    <select id="getPostId" resultType="java.lang.Integer">
+        select post_id
+        from post
+        where user_Id =#{userId}
+    </select>
+    <!--    增加积分-->
+    <update id="addScore">
+        update user
+        set score = score+#{score}
+        where user_id = #{userId}
+    </update>
+    <!--    得到积分-->
+    <select id="getScore" resultType="java.lang.Integer">
+        select score
+        from user
+        where user_id = #{userId}
+    </select>
+    <!--    升级-->
+    <update id="addLevel">
+        update user
+        set level = level+1
+        where user_id = #{userId}
+    </update>
+</mapper>
+

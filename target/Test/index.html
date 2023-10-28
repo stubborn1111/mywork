@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>H&LBBS</title>
+		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="css/userhead.css" />
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/jquery.smint.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('.sort').smint({
+					'scrollSpeed': 1000
+				});
+				$('.right').smint({
+					'scrollSpeed': 1000
+				});
+				$('.ding').smint({
+					'scrollSpeed': 1000
+				});
+			});
+		</script>
+
+	</head>
+
+	<body onload="setTimeout(function() { window.scrollTo(0, 1) }, 100);">
+		<div class="header">
+
+			<div id="ads">
+				<img src="img/1593662039918001.jpg" alt="" class="show" />
+				<img src="img/202006041040312673.jpeg" alt="" />
+				<img src="img/202009081539579301.jpeg" alt="" />
+				<img src="img/202009111106539164.jpg" alt="" />
+				<img src="img/block1bg.jpg" alt="" />
+				<ul>
+					<li class="active"></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+				<div class="bottom">
+					<div class="content">
+
+					</div>
+				</div>
+			</div>
+
+			<div class="head">
+
+				<div class="menu">
+					<img src="img/图片2.png" class="ls">
+					<div class="index">
+						<a href="index.html">首页</a>
+					</div>
+					<div class="nenu">
+						<a href="http://www.nenu.edu.cn/index.htm">东北师范大学</a>
+					</div>
+					<div class="index">
+						博客
+					</div>
+					<div class="index">
+						学院
+					</div>
+					<div class="index">
+						问答
+					</div>
+					<div id="edit">
+						<a href="centre.html" target="_blank" class="create">
+							<i class="write"></i>
+							<span>创作中心</span>
+						</a>
+					</div>
+					<div class="login">
+						<a href="login.html">登录</a>
+					</div>
+					<div class="register">
+						<a href="register.html">注册</a>
+					</div>
+					<div class="messagemy">
+						<div id="mess">
+							<a href="message.html">消息
+
+							</a>
+						</div>
+						<div class="down1">
+							<ul>
+								<li>
+									评论
+									<div id="m">1</div>
+
+								</li>
+								<li>
+									关注
+									<div id="m">2</div>
+
+								</li>
+								<li>
+									点赞
+									<div id="m">3</div>
+
+								</li>
+
+								<li>
+									私信
+									<div id="m">4</div>
+
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="usermy">
+						<div id="headimage">
+<!--							<img src="img/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy93dmtvY0YyTVhqV3hDVmdDdzdSVVFOVmljQmhXcHVQQXlrWVhmNkd3amZlbWlhT0gxT1doS0l3UmVmM1ViekhrclFIN0ZEWWF3OWJTVDRpY1BpYzhveHp6ZFEvNjQw.png">-->
+						</div>
+						<div id="userid0"></div>
+						<div class="down">
+							<ul>
+								<li>
+									<a href="user.html">个人中心</a>
+								</li>
+								<li>
+									个人空间
+								</li>
+								<li>
+									<a href="create.html">创作首页</a>
+								</li>
+								<div class="line"></div>
+								<li id="logout">
+									注销账号
+								</li>
+								<li id="quit">
+									退出
+								</li>
+
+							</ul>
+						</div>
+					</div>
+					<div id="seek">
+						<img src="img/sousuo1.png">
+					</div>
+					<!--<img src="img/图片3.png" class="bbs">-->
+
+				</div>
+			</div>
+
+		</div>
+		<div class="sort">
+			<div class="sorts">
+				<a href="#" class="item" id="post">热帖</a>
+				<a href="#" class="item" id="elite">版块精华</a>
+				<a href="#" class="item" id="reco">推荐帖主</a>
+				<a href="#" class="item" id="info">信息</a>
+			</div>
+		</div>
+
+		<div id="hunt">
+			<div id="close">
+				<img src="img/guanbi.png">
+			</div>
+			<div class="seekbox">
+				<input type="text" id="keyword"><input type="button" id="seekok" value="搜索">
+			</div>
+
+		</div>
+		<div class="right">
+			<ul>
+				<!--<li>推荐</li>
+				<li>
+					Python
+				</li>
+				<li>
+					Java
+				</li>
+				<li>
+					AI
+				</li>
+				<li>
+					前端
+				</li>
+				<li>
+					前端
+				</li>
+				<li>
+					前端
+				</li>
+				<li>
+					前端
+				</li>
+				<li>
+					前端
+				</li>-->
+			</ul>
+		</div>
+		<div class="post">
+			<div class="h1">
+				热帖
+				<!--<div class="more">
+					<a href="hotpost.html">更多>></a>
+				</div>-->
+			</div>
+			<table id="table1" cellspacing="0">
+				<thead>
+
+					<th><img src="img/leimupinleifenleileibie-copy.png"></th>
+					<th id="title"><img src="img/biaoti.png" class="title"></th>
+					<th><img src="img/tiwenren.png"></th>
+					<th><img src="img/huifu.png"></th>
+
+				</thead>
+				<tbody>
+					<!--<tr>
+						<td>
+							C#
+						</td>
+						<td id="title1">
+							跪求大神一个关于两个窗口实现互相传值(类似于两个窗体聊天的问题)
+						</td>
+						<td>
+							bvjdbv
+						</td>
+						<td>
+							4
+						</td>
+					</tr>
+					<tr>
+						<td>
+							C#
+						</td>
+						<td>
+							跪求大神一个关于两个窗口实现互相传值(类似于两个窗体聊天的问题)
+						</td>
+						<td>
+							bvjdbv
+						</td>
+						<td>
+							4
+						</td>
+					</tr>
+					<tr>
+						<td>
+							C#
+						</td>
+						<td>
+							跪求大神一个关于两个窗口实现互相传值(类似于两个窗体聊天的问题)
+						</td>
+						<td>
+							bvjdbv
+						</td>
+						<td>
+							4
+						</td>
+					</tr>
+					<tr>
+						<td>
+							C#
+						</td>
+						<td>
+							跪求大神一个关于两个窗口实现互相传值(类似于两个窗体聊天的问题)
+						</td>
+						<td>
+							bvjdbv
+						</td>
+						<td>
+							4
+						</td>
+					</tr>
+					<tr>
+						<td>
+							C#
+						</td>
+						<td>
+							跪求大神一个关于两个窗口实现互相传值(类似于两个窗体聊天的问题)
+						</td>
+						<td>
+							bvjdbv
+						</td>
+						<td>
+							4
+						</td>
+					</tr>
+					<tr>
+						<td>
+							C#
+						</td>
+						<td>
+							跪求大神一个关于两个窗口实现互相传值(类似于两个窗体聊天的问题)
+						</td>
+						<td>
+							bvjdbv
+						</td>
+						<td>
+							4
+						</td>
+					</tr>
+					<tr>
+						<td>
+							C#
+						</td>
+						<td>
+							跪求大神一个关于两个窗口实现互相传值(类似于两个窗体聊天的问题)
+						</td>
+						<td>
+							bvjdbv
+						</td>
+						<td>
+							4
+						</td>
+						<td id="renum">
+							2
+						</td>
+					</tr>
+					<tr>
+						<td>
+							C#
+						</td>
+						<td>
+							跪求大神一个关于两个窗口实现互相传值(类似于两个窗体聊天的问题)
+						</td>
+						<td>
+							bvjdbv
+						</td>
+						<td>
+							4
+						</td>
+						<td id="renum">
+							2
+						</td>
+					</tr>
+					<tr>
+						<td>
+							C#
+						</td>
+						<td>
+							跪求大神一个关于两个窗口实现互相传值(类似于两个窗体聊天的问题)
+						</td>
+						<td>
+							bvjdbv
+						</td>
+						<td>
+							4
+						</td>
+						<td id="renum">
+							2
+						</td>
+					</tr>
+					<tr>
+						<td>
+							C#
+						</td>
+						<td>
+							跪求大神一个关于两个窗口实现互相传值(类似于两个窗体聊天的问题)
+						</td>
+						<td>
+							bvjdbv
+						</td>
+						<td>
+							4
+						</td>
+						<td id="renum">
+							2
+						</td>
+					</tr>-->
+				</tbody>
+			</table>
+		</div>
+		<div class="elite">
+			<div class="h1">
+				版块精华
+				<!--<div class="more">
+					<a href="block.html">更多>></a>
+				</div>-->
+			</div>
+			<table id="table2" cellspacing="0">
+				<thead>
+
+					<th><img src="img/leimupinleifenleileibie-copy.png"></th>
+					<th id="title"><img src="img/biaoti.png" class="title"></th>
+					<th><img src="img/tiwenren.png"></th>
+					<th><img src="img/huifu.png"></th>
+
+				</thead>
+				<tbody>
+					<!--<tr>
+						<td>
+							C#
+						</td>
+						<td>
+							跪求大神一个关于两个窗口实现互相传值(类似于两个窗体聊天的问题)
+						</td>
+						<td>
+							bvjdbv
+						</td>
+						<td>
+							4
+						</td>
+						<td id="renum">
+							2
+						</td>
+					</tr>
+					<tr>
+						<td>
+							C#
+						</td>
+						<td>
+							跪求大神一个关于两个窗口实现互相传值(类似于两个窗体聊天的问题)
+						</td>
+						<td>
+							bvjdbv
+						</td>
+						<td>
+							4
+						</td>
+					</tr>
+					<tr>
+						<td>
+							C#
+						</td>
+						<td>
+							跪求大神一个关于两个窗口实现互相传值(类似于两个窗体聊天的问题)
+						</td>
+						<td>
+							bvjdbv
+						</td>
+						<td>
+							4
+						</td>
+					</tr>
+					<tr>
+						<td>
+							C#
+						</td>
+						<td>
+							跪求大神一个关于两个窗口实现互相传值(类似于两个窗体聊天的问题)
+						</td>
+						<td>
+							bvjdbv
+						</td>
+						<td>
+							4
+						</td>
+					</tr>
+					<tr>
+						<td>
+							C#
+						</td>
+						<td>
+							跪求大神一个关于两个窗口实现互相传值(类似于两个窗体聊天的问题)
+						</td>
+						<td>
+							bvjdbv
+						</td>
+						<td>
+							4
+						</td>
+					</tr>
+					<tr>
+						<td>
+							C#
+						</td>
+						<td>
+							跪求大神一个关于两个窗口实现互相传值(类似于两个窗体聊天的问题)
+						</td>
+						<td>
+							bvjdbv
+						</td>
+						<td>
+							4
+						</td>
+					</tr>
+					<tr>
+						<td>
+							C#
+						</td>
+						<td>
+							跪求大神一个关于两个窗口实现互相传值(类似于两个窗体聊天的问题)
+						</td>
+						<td>
+							bvjdbv
+						</td>
+						<td>
+							4
+						</td>
+					</tr>
+					<tr>
+						<td>
+							C#
+						</td>
+						<td>
+							跪求大神一个关于两个窗口实现互相传值(类似于两个窗体聊天的问题)
+						</td>
+						<td>
+							bvjdbv
+						</td>
+						<td>
+							4
+						</td>
+					</tr>
+					<tr>
+						<td>
+							C#
+						</td>
+						<td>
+							跪求大神一个关于两个窗口实现互相传值(类似于两个窗体聊天的问题)
+						</td>
+						<td>
+							bvjdbv
+						</td>
+						<td>
+							4
+						</td>
+					</tr>
+					<tr>
+						<td>
+							C#
+						</td>
+						<td>
+							跪求大神一个关于两个窗口实现互相传值(类似于两个窗体聊天的问题)
+						</td>
+						<td>
+							bvjdbv
+						</td>
+						<td>
+							4
+						</td>
+					</tr>-->
+
+				</tbody>
+			</table>
+		</div>
+		<div class="reco">
+			<div class="h1">
+				推荐帖主
+			</div>
+			<table id="table3">
+				<tbody>
+					<tr>
+						<!--<td>
+							<div class="himg"><img src="img/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy93dmtvY0YyTVhqV3hDVmdDdzdSVVFOVmljQmhXcHVQQXlrWVhmNkd3amZlbWlhT0gxT1doS0l3UmVmM1ViekhrclFIN0ZEWWF3OWJTVDRpY1BpYzhveHp6ZFEvNjQw.png"></div>
+							<div id="mati">
+								<span id="name">熬夜猝死</span>
+								<span id="rank"><img src="img/jibie (1).png">11</span>
+								<button id="focus">关注</button><button id="message">私信</button>
+							</div>
+						</td>
+						<td>
+							<div class="himg"><img src="img/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy93dmtvY0YyTVhqV3hDVmdDdzdSVVFOVmljQmhXcHVQQXlrWVhmNkd3amZlbWlhT0gxT1doS0l3UmVmM1ViekhrclFIN0ZEWWF3OWJTVDRpY1BpYzhveHp6ZFEvNjQw.png"></div>
+							<div id="mati">
+								<span id="name">熬夜猝死</span>
+								<span id="rank"><img src="img/jibie (1).png">11</span>
+								<button id="focus">关注</button><button id="message">私信</button>
+							</div>
+						</td>
+						<td>
+							<div class="himg"><img src="img/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy93dmtvY0YyTVhqV3hDVmdDdzdSVVFOVmljQmhXcHVQQXlrWVhmNkd3amZlbWlhT0gxT1doS0l3UmVmM1ViekhrclFIN0ZEWWF3OWJTVDRpY1BpYzhveHp6ZFEvNjQw.png"></div>
+							<div id="mati">
+								<span id="name">熬夜猝死</span>
+								<span id="rank"><img src="img/jibie (1).png">11</span>
+								<button id="focus">关注</button><button id="message">私信</button>
+							</div>
+						</td>
+						<td>
+							<div class="himg"><img src="img/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy93dmtvY0YyTVhqV3hDVmdDdzdSVVFOVmljQmhXcHVQQXlrWVhmNkd3amZlbWlhT0gxT1doS0l3UmVmM1ViekhrclFIN0ZEWWF3OWJTVDRpY1BpYzhveHp6ZFEvNjQw.png"></div>
+							<div id="mati">
+								<span id="name">熬夜猝死</span>
+								<span id="rank"><img src="img/jibie (1).png">11</span>
+								<button id="focus">关注</button><button id="message">私信</button>
+							</div>
+						</td>-->
+					</tr>
+
+						<!--<td>
+							<div class="himg"><img src="img/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy93dmtvY0YyTVhqV3hDVmdDdzdSVVFOVmljQmhXcHVQQXlrWVhmNkd3amZlbWlhT0gxT1doS0l3UmVmM1ViekhrclFIN0ZEWWF3OWJTVDRpY1BpYzhveHp6ZFEvNjQw.png"></div>
+							<div id="mati">
+								<span id="name">熬夜猝死</span>
+								<span id="rank"><img src="img/jibie (1).png">11</span>
+								<button id="focus">关注</button><button id="message">私信</button>
+							</div>
+						</td>
+						<td>
+							<div class="himg"><img src="img/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy93dmtvY0YyTVhqV3hDVmdDdzdSVVFOVmljQmhXcHVQQXlrWVhmNkd3amZlbWlhT0gxT1doS0l3UmVmM1ViekhrclFIN0ZEWWF3OWJTVDRpY1BpYzhveHp6ZFEvNjQw.png"></div>
+							<div id="mati">
+								<span id="name">熬夜猝死</span>
+								<span id="rank"><img src="img/jibie (1).png">11</span>
+								<button id="focus">关注</button><button id="message">私信</button>
+							</div>
+						</td>
+						<td>
+							<div class="himg"><img src="img/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy93dmtvY0YyTVhqV3hDVmdDdzdSVVFOVmljQmhXcHVQQXlrWVhmNkd3amZlbWlhT0gxT1doS0l3UmVmM1ViekhrclFIN0ZEWWF3OWJTVDRpY1BpYzhveHp6ZFEvNjQw.png"></div>
+							<div id="mati">
+								<span id="name">熬夜猝死</span>
+								<span id="rank"><img src="img/jibie (1).png">11</span>
+								<button id="focus">关注</button><button id="message">私信</button>
+							</div>
+						</td>
+						<td>
+							<div class="himg"><img src="img/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy93dmtvY0YyTVhqV3hDVmdDdzdSVVFOVmljQmhXcHVQQXlrWVhmNkd3amZlbWlhT0gxT1doS0l3UmVmM1ViekhrclFIN0ZEWWF3OWJTVDRpY1BpYzhveHp6ZFEvNjQw.png"></div>
+							<div id="mati">
+								<span id="name">熬夜猝死</span>
+								<span id="rank"><img src="img/jibie (1).png">11</span>
+								<button id="focus">关注</button><button id="message">私信</button>
+							</div>
+						</td>-->
+
+				</tbody>
+			</table>
+		</div>
+		<div class="info">
+			<div class="h1">
+				信息
+			</div>
+			<div class="infom">
+				<div class="basic1">
+					<p>Tel：（86－431）－85684088　</p>
+					<p>邮箱：dsxxw@nenu.edu.cn</p>
+				</div>
+				<div class="basic2">
+					<p>地址：吉林省长春市人民大街5268号</p>
+					<p>邮编：邮编：130024</p>
+				</div>
+				<img src="img/图片5.png">
+			</div>
+
+		</div>
+		<div class="ding">
+			<img src="img/fuwupingjia-kefu.png" class="service">
+			<img src="img/app (3).png" class="app">
+			<img src="img/dingbu.png" class="top">
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/admin.css" />
+		<link rel="stylesheet" href="css/userhead.css" />
+
+	</head>
+
+	<body>
+		<div class="black"></div>
+		<div class="all">
+
+			<div class="head">
+
+				<div class="menu">
+					<img src="img/图片2.png" class="ls">
+					<div class="index">
+						<a href="index.html">首页</a>
+					</div>
+					<div class="nenu">
+						<a href="http://www.nenu.edu.cn/index.htm">东北师范大学</a>
+					</div>
+					<div class="index">
+						博客
+					</div>
+					<div class="index">
+						学院
+					</div>
+					<div class="index">
+						问答
+					</div>
+					<div id="edit">
+						<a href="centre.html" target="_blank" class="create">
+							<i class="write"></i>
+							<span>创作中心</span>
+						</a>
+					</div>
+					<div class="login">
+						<a href="login.html">登录</a>
+					</div>
+					<div class="register">
+						<a href="register.html">注册</a>
+					</div>
+					<div class="messagemy">
+						<div id="mess">
+							<a href="message.html">消息
+
+							</a>
+						</div>
+						<div class="down1">
+							<ul>
+								<li>
+									评论
+									<div id="m">1</div>
+								</li>
+								<li>
+									关注
+									<div id="m">2</div>
+<!--									<div id="remind1"></div>-->
+								</li>
+								<li>
+									点赞
+									<div id="m">3</div>
+<!--									<div id="remind1"></div>-->
+								</li>
+
+								<li>
+									私信
+									<div id="m">4</div>
+<!--									<div id="remind1"></div>-->
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="usermy">
+						<div id="headimage">
+<!--							<img src="img/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy93dmtvY0YyTVhqV3hDVmdDdzdSVVFOVmljQmhXcHVQQXlrWVhmNkd3amZlbWlhT0gxT1doS0l3UmVmM1ViekhrclFIN0ZEWWF3OWJTVDRpY1BpYzhveHp6ZFEvNjQw.png">-->
+						</div>
+						<div id="userid0"></div>
+						<div class="down">
+							<ul>
+								<li>
+									<a href="user.html">个人中心</a>
+								</li>
+								<li>
+									<a href="others.html">个人空间</a>
+								</li>
+								<li>
+									<a href="create.html">创作首页</a>
+								</li>
+								<div class="line"></div>
+								<li>
+									注销账号
+								</li>
+								<li id="quit">
+									退出
+								</li>
+
+							</ul>
+						</div>
+					</div>
+					<div id="seek">
+						<img src="img/sousuo1.png">
+					</div>
+				</div>
+
+			</div>
+			<div id="header">
+				<div class="img"></div>
+				<div id="name"></div>
+			</div>
+			<div id="hunt">
+				<div id="close">
+					<img src="img/guanbi.png">
+				</div>
+				<div class="seekbox">
+					<input type="text" id="keyword"><input type="button" id="seekok" value="搜索">
+				</div>
+
+			</div>
+			<div class="both">
+
+				<div id="leftmenu">
+					<span id="aduser">
+				管理用户
+			</span>
+					<span id="adpost">
+				管理帖子
+			</span>
+					<span id="adblock">
+				管理板块
+			</span>
+					<!--<span id="appoint">
+				任命版主
+			</span>-->
+					<span id="checkpost">
+				审核帖子
+			</span>
+					<span id="check">
+				审核管理员
+			</span>
+				</div>
+				<div id="main">
+					<div id="auser">
+						<div id="title">
+							管理用户
+							<div class="line"></div>
+						</div>
+						<div id="search">
+							筛选：
+							<input type="text" id="key" placeholder="请输入用户名">
+							<button id="seek1">搜索</button>
+						</div>
+						<table id="table1" cellspacing="0">
+							<!--<tr>
+								<td id="userid">
+									1
+								</td>
+								<td id="pic">
+									<div class="himg"><img src="img/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy93dmtvY0YyTVhqV3hDVmdDdzdSVVFOVmljQmhXcHVQQXlrWVhmNkd3amZlbWlhT0gxT1doS0l3UmVmM1ViekhrclFIN0ZEWWF3OWJTVDRpY1BpYzhveHp6ZFEvNjQw.png"></div>
+								</td>
+								<td id="fname">
+									熬夜猝死
+								</td>
+								<td id="cancel">
+									删除
+								</td>
+								<td id="addblocker">
+									任命版主
+								</td>
+							</tr>
+							<tr>
+								<td id="userid">
+									1
+								</td>
+								<td id="pic">
+									<div class="himg"><img src="img/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy93dmtvY0YyTVhqV3hDVmdDdzdSVVFOVmljQmhXcHVQQXlrWVhmNkd3amZlbWlhT0gxT1doS0l3UmVmM1ViekhrclFIN0ZEWWF3OWJTVDRpY1BpYzhveHp6ZFEvNjQw.png"></div>
+								</td>
+								<td id="fname">
+									熬夜猝死
+								</td>
+								<td id="cancel">
+									删除
+								</td>
+								<td id="deblocker">
+									任命版主
+								</td>
+								<td>
+									C#版主
+								</td>
+							</tr>-->
+						</table>
+						<hr />
+						<div class="buttons">
+							<button id="bt0" class="btn">首页</button>
+							<button id="bt1" class="btn">上一页</button>
+							<button id="bt2" class="btn">下一页</button>
+							<button id="bt3" class="btn">尾页</button> 当前第
+							<span id="page" class="pageNum"></span>页 共
+							<span id="pageSize" class="pageNum"></span>页 共
+							<span id="total" class="pageNum"></span>条数据 到第
+							<input type="text" id="number" /> 页
+							<button id="pageNumber" class="btn">确定</button>
+						</div>
+						<div id="appoint">
+							<div id="user">
+								
+							</div>
+							<div id="userid1"></div>
+							<select name="sort" id="sortname">
+								<option value="1">请选择板块</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+							</select>
+							<button id="sure">确认任命</button>
+						</div>
+					</div>
+					<div id="apost">
+						<div id="title">
+							管理帖子
+							<div class="line"></div>
+						</div>
+						<div id="search1">
+							筛选：
+							<select name="sort" id="sortname1">
+								<option value="1">java</option>
+								<option value="2">C#</option>
+								<option value="3">python</option>
+							</select>
+							<input type="text" id="key1" placeholder="请输入关键词">
+							<button id="seek2">搜索</button>
+						</div>
+						<table id="table2" cellspacing="0">
+							<!--<tr>
+								<td id="blo">
+									<span id="block">java</span>
+								</td>
+								<td id="topic">
+									加的意义是什么？
+								</td>
+								<td id="del">
+									删除
+								</td>
+								<td id="fav">
+									<img src="img/dianzan.png">2
+								</td>
+								<td id="reply">
+									<img src="img/huifu1.png">1
+								</td>
+							</tr>
+							<tr>
+								<td id="blo">
+									<span id="block">python</span>
+								</td>
+								<td id="topic">
+									long g=10是什么？
+								</td>
+								<td id="del">
+									删除
+								</td>
+								<td id="fav">
+									<img src="img/dianzan.png">2
+								</td>
+								<td id="reply">
+									<img src="img/huifu1.png">1
+								</td>
+							</tr>
+							<tr>
+								<td id="blo">
+									<span id="block">C#</span>
+								</td>
+								<td id="topic">
+									g=10bint有必什么？
+								</td>
+								<td id="del">
+									删除
+								</td>
+								<td id="fav">
+									<img src="img/dianzan.png">2
+								</td>
+								<td id="reply">
+									<img src="img/huifu1.png">1
+								</td>
+							</tr>-->
+						</table>
+						<hr />
+						<div class="buttons">
+							<button id="bt00" class="btn">首页</button>
+							<button id="bt01" class="btn">上一页</button>
+							<button id="bt02" class="btn">下一页</button>
+							<button id="bt03" class="btn">尾页</button> 当前第
+							<span id="page1" class="pageNum"></span>页 共
+							<span id="pageSize1" class="pageNum"></span>页 共
+							<span id="total1" class="pageNum"></span>条数据 到第
+							<input type="text" id="number1" /> 页
+							<button id="pageNumber1" class="btn">确定</button>
+						</div>
+
+					</div>
+					<div id="ablock">
+						<div id="title">
+							<div id="ad">删除版块</div>
+							<div id="add">增加板块</div>
+							<div class="line"></div>
+						</div>
+						<div id="adb">
+							<!--<div id="block1">
+								<div id="blockname">
+									JAVA
+								</div>
+								<div id="delete">
+									删除
+								</div>
+								<div id="blockid">2</div>
+							</div>
+							<div id="block1">
+								<div id="blockname">
+									JAVA
+								</div>
+								<div id="delete">
+									删除
+								</div>
+								<div id="blockid">2</div>
+							</div>
+							<div id="block1">
+								<div id="blockname">
+									JAVA
+								</div>
+								<div id="delete">
+									删除
+								</div>
+								<div id="blockid">2</div>
+							</div>
+							<div id="block1">
+								<div id="blockname">
+									JAVA
+								</div>
+								<div id="delete">
+									删除
+								</div>
+								<div id="blockid">2</div>
+							</div>-->
+						</div>
+						<div id="addb">
+							<input type="text" id="addblock">
+							<button id="save">保存</button>
+						</div>
+
+					</div>
+					<div id="acheck">
+						<div id="title">
+							审核管理员
+							<div class="line"></div>
+						</div>
+						<div id="checkad">
+							<table id="table3" cellspacing="0">
+								<!--<tr>
+									<td id="pic">
+										<div class="himg"><img src="img/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy93dmtvY0YyTVhqV3hDVmdDdzdSVVFOVmljQmhXcHVQQXlrWVhmNkd3amZlbWlhT0gxT1doS0l3UmVmM1ViekhrclFIN0ZEWWF3OWJTVDRpY1BpYzhveHp6ZFEvNjQw.png"></div>
+									</td>
+									<td id="fname">
+										熬夜猝死
+									</td>
+									<td id="agree">
+										同意
+									</td>
+									<td id="disagree">
+										拒绝
+									</td>
+								</tr>
+								<tr>
+									<td id="pic">
+										<div class="himg"><img src="img/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy93dmtvY0YyTVhqV3hDVmdDdzdSVVFOVmljQmhXcHVQQXlrWVhmNkd3amZlbWlhT0gxT1doS0l3UmVmM1ViekhrclFIN0ZEWWF3OWJTVDRpY1BpYzhveHp6ZFEvNjQw.png"></div>
+									</td>
+									<td id="fname">
+										熬夜猝死
+									</td>
+									<td id="agree">
+										同意
+									</td>
+									<td id="disagree">
+										拒绝
+									</td>
+								</tr>-->
+							</table>
+						</div>
+					</div>
+					<div id="acheckpost">
+						<div id="title">
+							审核帖子
+							<div class="line"></div>
+						</div>
+						<table id="table4" cellspacing="0">
+							<!--<tr>
+								<td>
+
+									<div id="posttopic">标题：long g=10byte = (byte)(int)(g/3)里int有必要加吗？加的意义是什么？</div>
+									<div id="postblock">板块：C#</div>
+									<div id="postcontent">
+										内容：long g=10byte = (byte)(int)(g/3)里int有必要加吗？加的意义是什么？
+									</div>
+									<div id="agree1">
+										通过
+									</div>
+									<div id="disagree1">
+										驳回
+									</div>
+								</td>
+							</tr>-->
+							<!--<tr>
+								<td>
+
+									<div id="posttopic">标题：long g=10byte = (byte)(int)(g/3)里int有必要加吗？加的意义是什么？</div>
+									<div id="postblock">板块：C#</div>
+									<div id="postcontent">
+										内容：long g=10byte = (byte)(int)(g/3)里int有必要加吗？加的意义是什么？
+									</div>
+									<div id="agree1">
+										通过
+									</div>
+									<div id="disagree1">
+										驳回
+									</div>
+								</td>
+							</tr>-->
+						</table>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script type="text/javascript" src="js/admin1.js"></script>
+		<script type="text/javascript" src="js/userhead.js"></script>
+		<script type="text/javascript" src="js/seek.js"></script>
+	</body>
+
+</html>

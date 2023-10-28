@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--引入映射配置文件-->
+<mapper namespace="com.hengzhi.mapper.CreatCenterMapper">
+    <resultMap id="PostMap" type="com.hengzhi.entity.Post">
+        <result column="post_id" property="postId"></result>
+        <result column="title" property="title"></result>
+        <result column="info" property="info"></result>
+        <result column="user_id" property="userId"></result>
+        <result column="reply_number" property="replyNumber"></result>
+        <result column="praise" property="praise"></result>
+        <result column="review" property="review"></result>
+        <result column="whether_top" property="whetherTop"></result>
+        <result column="whether_file" property="whetherFile"></result>
+        <result column="fileUrl" property="fileUrl"></result>
+        <result column="which_board" property="whichBoard"></result>
+        <result column="whether_review" property="whetherReview"></result>
+        <result column="date" property="date"></result>
+    </resultMap>
+    <resultMap id="BoardMap" type="com.hengzhi.entity.Board">
+        <result column="board_id" property="boardId"></result>
+        <result column="board_name" property="boardName"></result>
+        <result column="post_number" property="postNumber"></result>
+    </resultMap>
+    <resultMap id="ReplyMap" type="com.hengzhi.entity.Reply">
+        <result column="reply_id" property="replyId"></result>
+        <result column="post_id" property="postId"></result>
+        <result column="user_id" property="userId"></result>
+        <result column="replied_id" property="repliedId"></result>
+        <result column="reply_info" property="replyInfo"></result>
+        <result column="kind" property="kind"></result>
+        <result column="praise" property="praise"></result>
+        <result column="date" property="date"></result>
+    </resultMap>
+    <!--    返回所有帖子-->
+    <select id="allPost" resultMap="PostMap">
+        select *
+        from post
+        where user_id = #{userId,jdbcType=BIGINT}
+    </select>
+    <!--    返回帖子对应的板块名-->
+    <select id="getBoardNameByBoardId" resultType="java.lang.String">
+        select board_name
+        from board
+        where board_id = #{boardId,jdbcType=BIGINT}
+    </select>
+    <!--    获取用户帖子的所有id-->
+    <select id="getAllPostId" resultType="java.lang.Integer">
+        select post_id
+        from post
+        where user_id = #{userId,jdbcType=BIGINT}
+    </select>
+    <!--    返回用户帖子被收藏的数目-->
+    <select id="postCollectNumber" resultType="java.lang.Integer">
+        select count(favoritepost_id)
+        from favoritepost
+        where Collected_id = #{postId,jdbcType=BIGINT}
+    </select>
+    <!--    返回用户被点赞的数量，帖子被点赞post.praise,-->
+    <select id="postPraise" resultType="java.lang.Integer">
+        select count(praise_id)
+        from praise
+        <where>
+            kind = 1
+            and
+            post_id = #{postId,jdbcType=BIGINT}
+        </where>
+    </select>
+    <!--    获取用户回复的所有id-->
+    <select id="getAllReplyId" resultType="java.lang.Integer">
+        select reply_id
+        from reply
+        where user_id = #{userId,jdbcType=BIGINT}
+    </select>
+    <!--    或回复被点赞,reply.praise,-->
+    <select id="replyPraise" resultType="java.lang.Integer">
+        select count(praise_id)
+        from praise
+        <where>
+            kind = 0
+            and
+            reply_id = #{replyId,jdbcType=BIGINT}
+        </where>
+    </select>
+    <!--    返回用户帖子被回复的数量，-->
+    <select id="postReplyNumber" resultType="java.lang.Integer">
+        select count(reply_id)
+        from reply
+        <where>
+            kind = 1
+            and
+            post_id = #{postId,jdbcType=BIGINT}
+        </where>
+    </select>
+    <!--    或回复被回复的数量-->
+    <select id="replyReplyNumber" resultType="java.lang.Integer">
+        select count(reply_id)
+        from reply
+        <where>
+            kind = 0
+            and
+            replied_id = #{replyId,jdbcType=BIGINT}
+        </where>
+    </select>
+    <!--    创作发布帖子-->
+    <insert id="addPost">
+        insert
+        into post(title,info,user_id,whether_file,fileUrl,which_board)
+        value(#{title},#{info},#{userId},#{whetherFile},#{fileUrl},#{whichBoard})
+    </insert>
+    <!--    所有回复-->
+    <select id="allReply" resultMap="ReplyMap">
+        select *
+        from reply
+        where user_id = #{userId}
+    </select>
+    <select id="getPostByPostId" resultType="java.lang.String">
+        select title
+        from post
+        where post_id = #{postId}
+    </select>
+
+</mapper>

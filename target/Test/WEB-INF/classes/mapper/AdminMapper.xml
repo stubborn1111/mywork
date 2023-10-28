@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--引入映射配置文件-->
+<mapper namespace="com.hengzhi.mapper.AdminMapper">
+    <resultMap id="BoardMap" type="com.hengzhi.entity.Board">
+        <result column="board_id" property="boardId"></result>
+        <result column="board_name" property="boardName"></result>
+        <result column="post_number" property="postNumber"></result>
+    </resultMap>
+    <resultMap id="PostMap" type="com.hengzhi.entity.Post">
+        <result column="post_id" property="postId"></result>
+        <result column="title" property="title"></result>
+        <result column="info" property="info"></result>
+        <result column="user_id" property="userId"></result>
+        <result column="reply_number" property="replyNumber"></result>
+        <result column="praise" property="praise"></result>
+        <result column="review" property="review"></result>
+        <result column="whether_top" property="whetherTop"></result>
+        <result column="whether_file" property="whetherFile"></result>
+        <result column="fileUrl" property="fileUrl"></result>
+        <result column="which_board" property="whichBoard"></result>
+        <result column="whether_review" property="whetherReview"></result>
+        <result column="date" property="date"></result>
+    </resultMap>
+    <resultMap id="UserMap" type="com.hengzhi.entity.User">
+        <result column="user_id" property="userId"></result>
+        <result column="username" property="username"></result>
+        <result column="password" property="password"></result>
+        <result column="score" property="score"></result>
+        <result column="level" property="level"></result>
+        <result column="headImageUrl" property="headImageUrl"></result>
+        <result column="power" property="power"></result>
+        <result column="review" property="review"></result>
+        <result column="whether_review" property="whetherReview"></result>
+    </resultMap>
+    <sql id="Base_Column_List">
+        user_id,username,score,level,headImageUrl,power,review,whether_review
+    </sql>
+    <!--    返回所有用户-->
+    <select id="allUser" resultMap="UserMap">
+        select
+        <include refid="Base_Column_List"></include>
+        from user
+    </select>
+    <!--    根据用户id，返回所管理的板块id-->
+    <select id="getBoardIdByUserId" resultType="java.lang.Integer">
+        select board_id
+        from boardhost
+        where user_id = #{userId,jdbcType=BIGINT}
+    </select>
+    <!--    根据板块id，返回所管理的板块名字-->
+    <select id="getBoardNameByBoardId" resultType="java.lang.String">
+        select board_name
+        from board
+        where board_id = #{boardId,jdbcType=BIGINT}
+    </select>
+    <!--    根据用户id，获取用户名-->
+    <select id="getUsernameByUserId" resultType="java.lang.String">
+        select username
+        from user
+        where user_id = #{userId,jdbcType=BIGINT}
+    </select>
+    <!--    返回所有帖子-->
+    <select id="allPost" resultMap="PostMap">
+        select *
+        from post
+        <where>
+            whether_review ='YES'
+            and
+            review = 0
+        </where>
+    </select>
+    <!--    返回所有板块-->
+    <select id="allBoard" resultMap="BoardMap">
+        select *
+        from board
+    </select>
+    <!--    返回所有待审核帖子-->
+    <select id="allReviewPost" resultMap="PostMap">
+        select *
+        from post
+        where whether_review = 'NO'
+    </select>
+    <!--    所有待审核管理-->
+    <select id="allReviewAdmin" resultMap="UserMap">
+        select
+        <include refid="Base_Column_List"></include>
+        from user
+        where whether_review = 'NO'
+    </select>
+    <!--    审核管理-->
+    <update id="adminReview" parameterType="com.hengzhi.entity.User">
+        update user
+        <set>
+            review = #{review,jdbcType=BIGINT},
+            whether_review = 'YES',
+        </set>
+        where user_id = #{userId,jdbcType=BIGINT}
+    </update>
+    <!--    管理审核帖子-->
+    <update id="postReview" parameterType="com.hengzhi.entity.Post">
+        update post
+        <set>
+            <if test="review!=null and review != ''">
+                review = #{review,jdbcType=BIGINT},
+            </if>
+            whether_review = 'YES',
+        </set>
+        where post_id = #{postId,jdbcType=BIGINT}
+    </update>
+    <!--    删除帖子-->
+    <delete id="deletePost">
+        delete
+        from post
+        where post_id = #{postId,jdbcType=BIGINT}
+    </delete>
+    <!--    删除帖子的回复-->
+    <delete id="deletePostReply">
+        delete
+        from reply
+        where post_id = #{postId,jdbcType=BIGINT}
+    </delete>
+    <!--    删除帖子的点赞-->
+    <delete id="deletePostReplyPraise">
+        delete
+        from praise
+        where post_id = #{postId,jdbcType=BIGINT}
+    </delete>
+    <!--    删除对帖子的收藏-->
+    <delete id="deletePostFocus">
+        delete
+        from favoritepost
+        where Collected_id = #{postId,jdbcType=BIGINT}
+    </delete>
+    <!--    删除用户-->
+    <delete id="deleteUser" >
+        delete
+        from user
+        where user_id = #{userId,jdbcType=BIGINT}
+    </delete>
+    <!--    删除用户的帖子-->
+    <delete id="deleteUserPost">
+        delete
+        from post
+        where user_id = #{userId,jdbcType=BIGINT}
+    </delete>
+    <!--    获取用户所有的帖子的id-->
+    <select id="allUserPostId" resultType="java.lang.Integer">
+        select post_id
+        from post
+        where user_id = #{userId,jdbcType=BIGINT}
+    </select>
+    <!--    删除用户的回复-->
+    <delete id="deleteUserReply" >
+        delete
+        from reply
+        where user_id = #{userId,jdbcType=BIGINT}
+    </delete>
+    <!--    谁关注了此用户，或者被关注，删除一下-->
+    <delete id="deleteFavoritePeople" >
+        delete
+        from favoritepeople
+        <where>
+            Collected_id = #{userId}
+            or
+            Collector_id = #{userId}
+        </where>
+    </delete>
+    <!--        删除板块-->
+    <delete id="deleteBoard" parameterType="java.lang.Integer">
+        delete from board
+        where board_id = #{boardId,jdbcType=BIGINT}
+    </delete>
+    <!--    返回板块的帖子条数-->
+    <select id="boardPostNumber" resultType="java.lang.Integer">
+        select post_number
+        from board
+        where board_id = #{boardId,jdbcType=BIGINT}
+    </select>
+    <!--    管理任命版主-->
+    <insert id="appointBoardHost" >
+        insert
+        into boardhost(user_id,board_id)
+        value(#{userId},#{boardId})
+    </insert>
+    <!--    管理取消版主身份-->
+    <delete id="deleteBoardHost">
+        delete
+        from boardhost
+        where user_id = #{userId,jdbcType=BIGINT}
+    </delete>
+    <!--    个人信息的修改-->
+    <update id="userUpdate" parameterType="com.hengzhi.entity.User">
+        update user
+        <set>
+            <if test="password!=null and password != ''">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="headImageUrl!=null and headImageUrl != ''">
+                headImageUrl = #{headImageUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="review!=null and review != ''">
+                review = #{review,jdbcType=BIGINT},
+            </if>
+            <if test="score!=null and score != ''">
+                score = #{score,jdbcType=BIGINT},
+            </if>
+            <if test="level!=null and level != ''">
+                level = #{level,jdbcType=BIGINT},
+            </if>
+            <if test="power!=null and power != ''">
+                power = #{power,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where user_id = #{userId,jdbcType=BIGINT}
+    </update>
+    <!--管理搜索帖子功能-->
+    <select id="searchPost" resultMap="PostMap">
+        select *
+        from post
+        <where >
+            title like concat('%',#{query,jdbcType=VARCHAR},'%')
+            and
+            which_board = #{boardId,jdbcType=BIGINT}
+        </where>
+    </select>
+    <!--        板块名查重-->
+    <select id="boardNameCheck" resultMap="BoardMap" parameterType="java.lang.String">
+        select *
+        from board
+        <where>
+            <if test="boardName != null and boardName != ''">
+                board_name = #{boardName}
+            </if>
+        </where>
+    </select>
+    <!--        增加板块-->
+    <insert id="addBoard" parameterType="java.lang.String">
+        insert into
+        board(board_name)
+        value(#{boardName})
+    </insert>
+    <!--        更改帖子数目-->
+    <update id="updatePostNumber" parameterType="com.hengzhi.entity.Board">
+        update board
+        set number = number+1
+        where  board_id = #{boardId,jdbcType=BIGINT}
+    </update>
+</mapper>
+

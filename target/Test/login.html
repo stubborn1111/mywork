@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/login.css" />
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- 可选的 Bootstrap 主题文件 -->
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<!-- Bootstrap 核心 JavaScript 文件 -->
+	</head>
+
+	<body>
+		<div class="black"></div>
+		<div class="all">
+			<div class="head">
+
+				<div class="menu">
+					<img src="img/图片2.png" class="ls">
+					<div class="index">
+						<a href="index.html">首页</a>
+					</div>
+					<div class="index">
+						博客
+					</div>
+					<div class="index">
+						学院
+					</div>
+					<div class="index">
+						问答
+					</div>
+					<div id="edit">
+						<a href="centre.html" target="_blank" class="create">
+							<i class="write"></i>
+							<span>创作中心</span>
+						</a>
+					</div>
+					<div class="login1">
+						<a href="login.html">登录</a>
+					</div>
+					<div class="register1">
+						<a href="register.html">注册</a>
+					</div>
+					<div id="seek">
+						<img src="img/sousuo1.png">
+					</div>
+					<img src="img/图片3.png" class="bbs">
+
+				</div>
+			</div>
+			<div id="hunt">
+				<div id="close">
+					<img src="img/guanbi.png">
+				</div>
+				<div class="seekbox">
+					<input type="text" id="keyword"><input type="button" id="seekok" value="搜索">
+				</div>
+
+			</div>
+			<div class="both">
+				<div class="main">
+					<div class="post">
+						<div id="id"></div>
+						<div id="topic">
+
+						</div>
+						<div id="topic2">
+
+						</div>
+						<div id="content">
+<!--							如果不是合并单元格，补齐很简单吧，筛选“空白”，拉公式等于上一单元格；如果是合并的，可能麻烦了，要么做的时候用格式刷而非“合并单元格”按钮（即用个最长的合并的单元格来刷成片的 A 或 B），要么就是可能还是再建个辅助列简单吧。-->
+						</div>
+					</div>
+					<div id="login">
+
+						<form id="form" name="form">
+							<input type="text" id="username" placeholder="用户名：1~15位字母或数字">
+							<div id="hintname"></div>
+							<input type="password" id="password" placeholder="密码：2~14位字母或数字">
+							<span id="look" class="glyphicon-eye-open glyphicon" style="display: inline-block;"></span>
+							<div id="hintpwd"></div>
+							<!--<input type="text" name="resultCode"  id="safecode" placeholder="验证码"  />-->
+							<!--<div class="picture2">
+						<img src="/RSCode" id="code" border='2' onclick="change()" />
+					</div>-->
+
+							<button type="submit" id="loginok">登录</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script type="text/javascript" src="js/login.js"></script>
+
+	</body>
+
+</html>

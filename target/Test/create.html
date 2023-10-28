@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/create.css" />
+		<link rel="stylesheet" href="css/userhead.css"/>
+	</head>
+
+	<body>
+		<div class="head">
+
+			<div class="menu">
+				<img src="img/图片2.png" class="ls">
+				<div class="index">
+					<a href="index.html">首页</a>
+				</div>
+				<div class="nenu">
+					<a href="http://www.nenu.edu.cn/index.htm">东北师范大学</a>
+				</div>
+				<div class="index">
+					博客
+				</div>
+				<div class="index">
+					学院
+				</div>
+				<div class="index">
+					问答
+				</div>
+				<div id="edit">
+					<a href="centre.html" target="_blank" class="create">
+						<i class="write"></i>
+						<span>创作中心</span>
+					</a>
+				</div>
+				<div class="login">
+					<a href="login.html">登录</a>
+				</div>
+				<div class="register">
+					<a href="register.html">注册</a>
+				</div>
+				<div class="messagemy">
+					<div id="mess">
+						<a href="message.html">消息
+							
+						</a>
+					</div>
+					<div class="down1">
+						<ul>
+							<li>
+								评论
+								<div id="m">1</div>
+								
+							</li>
+							<li>
+								关注
+								<div id="m">2</div>
+								
+							</li>
+							<li>
+								点赞
+								<div id="m">3</div>
+								
+							</li>
+
+							<li>
+								私信
+								<div id="m">4</div>
+								
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="usermy">
+					<div id="headimage">
+<!--						<img src="img/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy93dmtvY0YyTVhqV3hDVmdDdzdSVVFOVmljQmhXcHVQQXlrWVhmNkd3amZlbWlhT0gxT1doS0l3UmVmM1ViekhrclFIN0ZEWWF3OWJTVDRpY1BpYzhveHp6ZFEvNjQw.png">-->
+					</div>
+					<div id="userid0"></div>
+					<div class="down">
+						<ul>
+							<li>
+								<a href="user.html">个人中心</a>
+							</li>
+							<li>
+								<a href="others.html">个人空间</a>
+							</li>
+							<li>
+								<a href="create.html">创作首页</a>
+							</li>
+							<div class="line"></div>
+							<li>
+								注销账号
+							</li>
+							<li id="quit">
+								退出
+							</li>
+
+						</ul>
+					</div>
+				</div>
+				<div id="seek">
+					<img src="img/sousuo1.png">
+				</div>
+				
+
+			</div>
+		</div>
+
+		<div id="hunt">
+			<div id="close">
+				<img src="img/guanbi.png">
+			</div>
+			<div class="seekbox">
+				<input type="text" id="keyword"><input type="button" id="seekok" value="搜索">
+			</div>
+
+		</div>
+		<div class="right1">
+			<ul>
+				<li>
+					<a href="index.html">首页</a>
+
+				</li>
+
+				<li>
+					<a href="centre.html.html">创作中心</a>
+
+				</li>
+				<li>
+					<a href="user.html">个人主页</a>
+				</li>
+				<li>
+					<a href="create.html">我要发贴</a>
+				</li>
+
+			</ul>
+		</div>
+		<div class="main">
+			<div id="title">
+				<input id="topic" placeholder="请输入标题">
+			</div>
+			<div id="sel">
+				<select name="sort" id="sortname">
+					<!--<option value="1">请选择板块</option>
+					<option value="2">2</option>
+					<option value="3">3</option>-->
+				</select>
+			</div>
+			<input type="file" id="filename" name="filename" required="" lay-verify="filename" autocomplete="off" class="layui-input" multiple="multiple" />
+			<div id="write">
+				<div id="editor">
+
+				</div>
+				<button id="btn1">
+					提交
+				</button>
+			</div>
+		</div>
+
+		<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/create.js"></script>
+		<script type="text/javascript" src="js/seek.js"></script>
+		<script type="text/javascript" src="js/wangEditor.min.js"></script>
+		<script type="text/javascript">
+			var E = window.wangEditor;
+			var editor = new E('#editor');
+			document.getElementById('btn1').addEventListener('click', function() {
+				// 读取 html
+				alert(editor.txt.html());
+			}, false);
+			editor.customConfig.uploadImgShowBase64 = true; // 使用 base64 保存图片
+			editor.create();
+		</script>
+	</body>
+
+</html>

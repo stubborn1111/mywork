@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/post.css" />
+		<link rel="stylesheet" href="css/userhead.css"/>
+		<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.smint.js"></script>
+	</head>
+
+	<body>
+
+		<div class="head">
+
+			<div class="menu">
+				<img src="img/图片2.png" class="ls">
+				<div class="index">
+					<a href="index.html">首页</a>
+				</div>
+				<div class="nenu">
+					<a href="http://www.nenu.edu.cn/index.htm">东北师范大学</a>
+				</div>
+				<div class="index">
+					博客
+				</div>
+				<div class="index">
+					学院
+				</div>
+				<div class="index">
+					问答
+				</div>
+				<div id="edit">
+					<a href="centre.html" target="_blank" class="create">
+						<i class="write"></i>
+						<span>创作中心</span>
+					</a>
+				</div>
+				<div class="login">
+					<a href="login.html">登录</a>
+				</div>
+				<div class="register">
+					<a href="register.html">注册</a>
+				</div>
+				<div class="messagemy">
+					<div id="mess">
+						<a href="message.html">消息
+
+						</a>
+					</div>
+					<div class="down1">
+						<ul>
+							<li>
+								评论
+								<div id="m">1</div>
+
+							</li>
+							<li>
+								关注
+								<div id="m">2</div>
+
+							</li>
+							<li>
+								点赞
+								<div id="m">3</div>
+
+							</li>
+
+							<li>
+								私信
+								<div id="m">4</div>
+
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="usermy">
+					<div id="headimage">
+<!--						<img src="img/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy93dmtvY0YyTVhqV3hDVmdDdzdSVVFOVmljQmhXcHVQQXlrWVhmNkd3amZlbWlhT0gxT1doS0l3UmVmM1ViekhrclFIN0ZEWWF3OWJTVDRpY1BpYzhveHp6ZFEvNjQw.png">-->
+					</div>
+					<div id="userid0"></div>
+					<div class="down">
+						<ul>
+							<li>
+								<a href="user.html">个人中心</a>
+							</li>
+							<li>
+								<a href="others.html">个人空间</a>
+							</li>
+							<li>
+								<a href="create.html">创作首页</a>
+							</li>
+							<div class="line"></div>
+							<li>
+								注销账号
+							</li>
+							<li id="quit">
+								退出2
+							</li>
+
+						</ul>
+					</div>
+				</div>
+				<div id="seek">
+					<img src="img/sousuo1.png">
+				</div>
+				
+
+			</div>
+		</div>
+
+		<div id="hunt">
+			<div id="close">
+				<img src="img/guanbi.png">
+			</div>
+			<div class="seekbox">
+				<input type="text" id="keyword"><input type="button" id="seekok" value="搜索">
+			</div>
+
+		</div>
+		<div class="right1">
+			<ul>
+				<li>
+					<a href="index.html">首页</a>
+
+				</li>
+
+				<!--<li>
+					<a href="hotpost.html">热帖</a>
+				</li>-->
+				<li>
+					<a href="centre.html">创作中心</a>
+				</li>
+				<li>
+					<a href="user.html">个人主页</a>
+				</li>
+				<li>
+					<a href="create.html">我要发贴</a>
+				</li>
+
+			</ul>
+		</div>
+		<div class="main">
+			<table cellpadding="0" cellspacing="0" id="table1">
+				<!--<tr>
+					<td colspan="2" id="topic">
+						<div id='topic1'>SurfaceView 显示视频资源，声音极其小，几乎听不到，其他声音正常</div>
+						<span id="file">下载文件</span>
+						<div id="block">
+							<div id="plate">板块：Java</div>
+							<div id="reply"><img src="img/huifu1.png">回复 </div>
+
+							<div id="col"><img src="img/shoucang.png">收藏 </div>
+						</div>
+					</td>
+				</tr>-->
+				<!--<tr>
+					<td id="user">
+						<div id="tou">
+							<img src="img/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy93dmtvY0YyTVhqV3hDVmdDdzdSVVFOVmljQmhXcHVQQXlrWVhmNkd3amZlbWlhT0gxT1doS0l3UmVmM1ViekhrclFIN0ZEWWF3OWJTVDRpY1BpYzhveHp6ZFEvNjQw.png">
+
+						</div>
+						<div id="mati">
+							<span id="name">熬夜猝死</span>
+							<span id="rank"><img src="img/jibie (1).png">11</span>
+							<span id="inte">积分：147</span>
+							
+						</div>
+					</td>
+					<td id="resp">
+						<div id="con">同一个应用内，一个SurfaceView 显示视频资源（声音和画面），另一个是exoplayer播放另一个MP4。 两个同时播放，出现个问题：在某个板子的平板设备上，SurfaceView播放的声音特别小，几乎听不到（系统、媒体音量都开到最大），exoplayer播放正常，声音明显大很多。 在其他手机还有其他小平板，部分平板电视播放正常，声音正常，不会出现这种现象？ 请熟悉exoplayer的AudioManager相关的设置以及播放音频相关的源码的朋友指导主要是哪方面的问题？</div>
+						<div id="option">
+							<div id='replyid'>1</div>
+							<div id="time">2020-09-29 15:57:52</div>
+							<div id="tower">楼主</div>
+							<div id="res"><img src="img/huifu1.png">回复 </div>
+							<div id="praise"><img src="img/dianzan.png">点赞
+								<div id="num"> 1 </div>
+							</div>
+						</div>
+
+					</td>
+				</tr>
+				<tr>
+					<td id="user">
+						<div id="tou">
+							<img src="img/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy93dmtvY0YyTVhqV3hDVmdDdzdSVVFOVmljQmhXcHVQQXlrWVhmNkd3amZlbWlhT0gxT1doS0l3UmVmM1ViekhrclFIN0ZEWWF3OWJTVDRpY1BpYzhveHp6ZFEvNjQw.png">
+
+						</div>
+						<div id="mati">
+							<span id="name">王半仙</span>
+							<span id="rank"><img src="img/jibie (1).png">11</span>
+							<span id="inte">积分：147</span>
+							
+						</div>
+					</td>
+					<td id="resp">
+						<div id="con">exoplayer 的本地播放器模式播放有这个问题么</div>
+						<div id="option">
+							<div id='repid'>2</div>
+							<div id="time">2020-09-29 15:57:52</div>
+							<div id="tower">#1</div>
+							<div id="delete">删除评论</div>
+							<div id="res"><img src="img/huifu1.png">回复 </div>
+							<div id="praise"><img src="img/dianzan.png">点赞
+								<div id='num'> 1 </div>
+							</div>
+						</div>
+
+					</td>
+				</tr>
+				<tr>
+					<td id="user">
+						<div id="tou">
+							<img src="img/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy93dmtvY0YyTVhqV3hDVmdDdzdSVVFOVmljQmhXcHVQQXlrWVhmNkd3amZlbWlhT0gxT1doS0l3UmVmM1ViekhrclFIN0ZEWWF3OWJTVDRpY1BpYzhveHp6ZFEvNjQw.png">
+
+						</div>
+						<div id="mati">
+							<span id="name">王半仙</span>
+							<span id="rank"><img src="img/jibie (1).png">11</span>
+							<span id="inte">积分：147</span>
+							
+						</div>
+					</td>
+					<td id="resp">
+						<div id="replys">
+							<div id="rname">
+								回复 1 楼 王半仙:
+							</div>
+							<div id="rcon">
+								exoplayer 的本地播放器模式播放有这个问题么
+							</div>
+						</div>
+						<div id="con">exoplayer播放那部分声音正常的，SurfaceView是webrtc 显示视频和音频，在这个设备上声音特别小？ 不太清楚播放器播放视频内容，在声音上的处理细节，领导的意思是让去参考下这部分，按照播放器的处理来做。</div>
+
+						<div id="option">
+							<div id='repid'>2</div>
+							<div id="time">2020-09-29 15:57:52</div>
+							<div id="tower">#1</div>
+							<div id="res"><img src="img/huifu1.png">回复 </div>
+							<div id="praise"><img src="img/dianzan.png">点赞
+								<div id='num'> 1 </div>
+							</div>
+						</div>
+
+					</td>
+				</tr>-->
+			</table>
+			<div id="write">
+				<div id="editor">
+
+				</div>
+				<div id="reuser">
+
+				</div>
+				<button id="btn1">
+					提交回复
+				</button>
+				<div id="replyid"></div>
+			</div>
+			<div id="similar">
+				<table id="table2" cellpadding="0" cellspacing="0">
+					<!--<tr>
+						<td>
+							<div id="h"> 跪求大神一个关于两个窗口实现互相传值(类似于两个窗体聊天的问题)</div>
+							<div id="content">如题。android应该算是一个系统，或者一个平台吧。 </div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div id="h"> 跪求大神一个关于两个窗口实现互相传值(类似于两个窗体聊天的问题)</div>
+							<div id="content">如题。android应该算是一个系统，或者一个平台吧。 </div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div id="h"> 跪求大神一个关于两个窗口实现互相传值(类似于两个窗体聊天的问题)</div>
+							<div id="content">如题。android应该算是一个系统，或者一个平台吧。 </div>
+						</td>
+					</tr>-->
+				</table>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/wangEditor.min.js"></script>
+		<script type="text/javascript" src="js/post.js"></script>
+		<script type="text/javascript" src="js/similarpost.js" ></script>
+		<script type="text/javascript">
+			var E = window.wangEditor;
+			var editor = new E('#editor');
+			document.getElementById('btn1').addEventListener('click', function() {
+				// 读取 html
+				// alert(editor.txt.html());
+			}, false);
+			editor.customConfig.uploadImgShowBase64 = true; // 使用 base64 保存图片
+			editor.create();
+		</script>
+	</body>
+
+</html>

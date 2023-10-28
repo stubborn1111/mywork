@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+
+    <!--开启SpringMVC注解的支持-->
+    <mvc:annotation-driven/>
+
+    <!--开启注解扫描-->
+    <context:component-scan base-package="com.hengzhi.controller">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+    <context:component-scan base-package="com.hengzhi.mapper">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+    </context:component-scan>
+    <context:component-scan base-package="com.hengzhi.service">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+    </context:component-scan>
+
+    <!-- 指示Spring MVC扫描目标包中的类->扫描控制类 -->
+    <context:component-scan base-package="com.hengzhi.controller"/>
+    <!-- 指示Spring MVC扫描目标包中的类->扫描服务类 -->
+    <context:component-scan base-package="com.hengzhi.service"/>
+    <!-- 对静态资源放行  -->
+    <mvc:resources location="/css/" mapping="/css/**"/>
+    <mvc:resources location="/js/" mapping="/js/**"/>
+    <mvc:resources location="/download/" mapping="/download/**"/>
+    <mvc:resources location="/img/" mapping="/img/**"/>
+    <mvc:resources location="/headImage/" mapping="/headImage/**"/>
+    <!-- 全部资源放行 -->
+    <!--    <mvc:default-servlet-handler/>-->
+    <!--    文件上传-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 默认编码 -->
+        <property name="defaultEncoding" value="utf-8"/>
+        <!-- 文件大小最大值 -->
+        <property name="maxUploadSize" value="10485760000"/>
+        <!-- 内存中的最大值 -->
+        <property name="maxInMemorySize" value="40960"/>
+    </bean>
+
+
+    <!--    &lt;!&ndash; 文件上传的解析器 &ndash;&gt;-->
+    <!--    <bean id="multipart1Resolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">-->
+    <!--        &lt;!&ndash; 编码格式 &ndash;&gt;-->
+    <!--        <property name="defaultEncoding" value="UTF-8"/>-->
+    <!--        &lt;!&ndash; 配置上传文件的大小，以字节为单位；-1代表没有限制 &ndash;&gt;-->
+    <!--        <property name="maxUploadSize" value="-1"/>-->
+    <!--    </bean>-->
+
+
+</beans>

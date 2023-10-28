@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--引入映射配置文件-->
+<mapper namespace="com.hengzhi.mapper.UserMapper">
+    <resultMap id="PostMap" type="com.hengzhi.entity.Post">
+        <result column="post_id" property="postId"></result>
+        <result column="title" property="title"></result>
+        <result column="info" property="info"></result>
+        <result column="user_id" property="userId"></result>
+        <result column="reply_number" property="replyNumber"></result>
+        <result column="praise" property="praise"></result>
+        <result column="review" property="review"></result>
+        <result column="whether_top" property="whetherTop"></result>
+        <result column="whether_file" property="whetherFile"></result>
+        <result column="fileUrl" property="fileUrl"></result>
+        <result column="which_board" property="whichBoard"></result>
+        <result column="whether_review" property="whetherReview"></result>
+        <result column="date" property="date"></result>
+    </resultMap>
+    <resultMap id="UserMap" type="com.hengzhi.entity.User">
+        <result column="user_id" property="userId"></result>
+        <result column="username" property="username"></result>
+        <result column="password" property="password"></result>
+        <result column="score" property="score"></result>
+        <result column="level" property="level"></result>
+        <result column="headImageUrl" property="headImageUrl"></result>
+        <result column="power" property="power"></result>
+        <result column="review" property="review"></result>
+        <result column="whether_review" property="whetherReview"></result>
+    </resultMap>
+    <sql id="Base_Column_List">
+        user_id,username,score,level,headImageUrl,power,review,whether_review
+    </sql>
+    <!-- 引入自定义缓存类实现cache接口 -->
+    <!--    <cache type="com.hengzhi.utils.RedisCache"/>-->
+    <!--        登录-->
+    <select id="loginAboutUser" resultMap="UserMap">
+        select
+        <include refid="Base_Column_List"></include>
+        from user
+        <where>
+            <if test="username != null and username != ''">
+                and `username` = #{username}
+            </if>
+            <if test="password != null and password != ''">
+                and `password` = #{password}
+            </if>
+        </where>
+    </select>
+    <!--        用户名查重-->
+    <select id="usernameCheck" resultMap="UserMap" parameterType="java.lang.String">
+        select *
+        from user
+        <where>
+            <if test="username != null and username != ''">
+                and `username` = #{username}
+            </if>
+        </where>
+    </select>
+    <!--        注册-->
+    <insert id="userRegist">
+        insert into
+        user(username,password)
+        value(#{username},#{password})
+    </insert>
+    <!--返回随机热帖-->
+    <select id="hotPost" resultMap="PostMap">
+        select * from post
+        as t1 join
+        (select round(rand()*((select max(post_id) from post)-(select min(post_id)from post))+(select min(post_id)from post)) as post_id)as t2
+        where t1.post_id >=t2.post_id order by t1.post_id limit 1
+    </select>
+    <!--    根据板块id获取板块名-->
+    <select id="getBoardNameByBoardId" resultType="java.lang.String">
+        select board_name
+        from board
+        where board_id = #{boardId,jdbcType=BIGINT}
+    </select>
+</mapper>

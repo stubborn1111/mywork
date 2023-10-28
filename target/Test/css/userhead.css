@@ -1,0 +1,100 @@
+.usermy{
+	width: 9%;
+	float: left;
+	margin: 1% 1% 0 1%;
+}
+.messagemy{
+	width: 6%;
+	float: left;
+	margin: 2% 1% 0 1%;
+}
+#mess{
+	text-align: center;
+}
+#headimage{
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	overflow: hidden;
+	border:1px solid white;
+	margin: auto;
+}
+#headimage img{
+	width: 100%;
+}
+.down{
+	position: relative;
+	width: 130%;
+	z-index: 30;
+	top:0;
+	left: 0;
+	background-color: #F7F7FC;
+	color: #000000;
+	display: none;
+	padding: 0.05px 0;
+	box-shadow: 0 2px 3px 0 rgba(0,0,0,.1);
+}
+.down1{
+	position: relative;
+	width: 150%;
+	z-index: 30;
+	top:0;
+	left: 0;
+	background-color: #F7F7FC;
+	color: #000000;
+	display: none;
+	padding: 0.05px 0;
+	box-shadow: 0 2px 3px 0 rgba(0,0,0,.1);
+}
+.usermy:hover .down{
+	display: block;
+}
+.messagemy:hover .down1{
+	display: block;
+}
+ul{
+	list-style: none;
+	padding-inline-start: 0;
+}
+.menu li{
+	list-style: none;
+	padding:13% 1%;
+	text-align: center;
+	font-size: 85%;
+	cursor: pointer;
+}
+li:hover{
+	background-color: #F2F1F1;
+}
+.down a:link{
+	color: #000000;
+}
+.down a:visited{
+	color: #000000;
+}
+#remind{
+	border-radius: 50%;
+	border:0;
+	width: 14px;
+	height: 14px;
+	display: inline-block;
+	background-color: red;
+	margin-top: -30px;
+	margin-left: 3%;
+	vertical-align:super ;
+	font-size: 10px;
+	color: white;
+}
+#remind1{
+	border-radius: 50%;
+	border:0;
+	width: 14px;
+	height: 14px;
+	display: inline-block;
+	background-color: red;
+	margin-top: -3px;
+	margin-left: 3%;
+	vertical-align:middle ;
+	font-size: 10px;
+	color: white;
+}

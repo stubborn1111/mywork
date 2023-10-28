@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--引入映射配置文件-->
+<mapper namespace="com.hengzhi.mapper.NoticeMapper">
+    <resultMap id="NoticeMap" type="com.hengzhi.entity.Notice">
+        <result column="notice_id" property="noticeId"></result>
+        <result column="user_id" property="userId"></result>
+        <result column="post_id" property="postId"></result>
+        <result column="someone" property="someone"></result>
+        <result column="notice_type" property="noticeType"></result>
+        <result column="whether_see" property="whetherSee"></result>
+    </resultMap>
+    <resultMap id="UserMap" type="com.hengzhi.entity.User">
+        <result column="user_id" property="userId"></result>
+        <result column="username" property="username"></result>
+        <result column="password" property="password"></result>
+        <result column="score" property="score"></result>
+        <result column="level" property="level"></result>
+        <result column="headImageUrl" property="headImageUrl"></result>
+        <result column="power" property="power"></result>
+        <result column="review" property="review"></result>
+        <result column="whether_review" property="whetherReview"></result>
+    </resultMap>
+    <resultMap id="PostMap" type="com.hengzhi.entity.Post">
+        <result column="post_id" property="postId"></result>
+        <result column="title" property="title"></result>
+        <result column="info" property="info"></result>
+        <result column="user_id" property="userId"></result>
+        <result column="reply_number" property="replyNumber"></result>
+        <result column="praise" property="praise"></result>
+        <result column="review" property="review"></result>
+        <result column="whether_top" property="whetherTop"></result>
+        <result column="whether_file" property="whetherFile"></result>
+        <result column="fileUrl" property="fileUrl"></result>
+        <result column="which_board" property="whichBoard"></result>
+        <result column="whether_review" property="whetherReview"></result>
+        <result column="date" property="date"></result>
+    </resultMap>
+    <!--    关注新消息数-->
+    <select id="focusNum" resultType="java.lang.Integer">
+        select
+        count(notice_id)
+        from notice
+        <where>
+            user_id = #{userId}
+            and
+            notice_type = 'focus'
+            and
+            whether_see = 'NO'
+        </where>
+    </select>
+    <!--    点赞新消息数-->
+    <select id="praiseNum" resultType="java.lang.Integer">
+        select
+        count(notice_id)
+        from notice
+        <where>
+            user_id = #{userId}
+            and
+            notice_type = 'praise'
+            and
+            whether_see = 'NO'
+        </where>
+    </select>
+    <!--    评论新消息数-->
+    <select id="replyNum" resultType="java.lang.Integer">
+        select
+        count(notice_id)
+        from notice
+        <where>
+            user_id = #{userId}
+            and
+            notice_type = 'reply'
+            and
+            whether_see = 'NO'
+        </where>
+    </select>
+<!--    被点赞的帖子和点赞的用户-->
+    <select id="praiseResult" resultMap="NoticeMap">
+        select *
+        from notice
+        <where>
+            user_id = #{userId}
+            and
+            notice_type ='praise'
+        </where>
+    </select>
+    <select id="getUserByUserId" resultMap="UserMap">
+        select user_id,username,headImageUrl
+        from user
+        where user_id = #{userId}
+    </select>
+    <select id="getPostByPostId" resultMap="PostMap">
+        select *
+        from post
+        where post_id = #{postId}
+    </select>
+    <select id="replyResult" resultMap="NoticeMap">
+        select *
+        from notice
+        <where>
+            user_id = #{userId}
+            and
+            notice_type ='reply'
+        </where>
+    </select>
+    <select id="focusResult" resultType="java.lang.Integer">
+        select someone
+        from notice
+        <where>
+            user_id = #{userId}
+            and
+            notice_type ='focus'
+        </where>
+    </select>
+    <!--    清空消息-->
+    <update id="clean" >
+        update notice
+        set whether_see='YES'
+        <where>
+            user_id = #{userId}
+            and
+            notice_type = #{noticeType}
+        </where>
+    </update>
+</mapper>
